@@ -1,26 +1,24 @@
-# Continuous Deployment using AWS Code Pipeline and S3
+**CardMatching Game through AWS CodePipeline**
 
-This repo contains the code files used in this [YouTube video](https://youtu.be/biYVW1TMYAU).
+In this project, We make card matching game using s3 static website. By using AWSCodepipeline automatically copy the files from github to s3bucket and make updates if any changes you want.
 
-## TL;DR
-Code for a game is hosted in GitHub.  We create an S3 bucket for static website hosting, then create a continuous deployment pipeline (using AWS Code Pipeline) to automatically deploy the code whenever changes are made.
 
-## The Game
-A simple memory matching game.  The user clicks two cards (images of memes) to try to match them.  If there's a match, the cards disappear from the board.  If there's no match, the cards are flipped back to their blank side so the user can try again.
+Procedure : 
 
-The game consists of HTML, CSS and JavaScript.
+Step1 : 
+Setup your github repo.
+You can form my github repository to get all files needed.  **CardMatchingGame-AWSCodePipeline**
 
-Ideas for additional features:
-- A scoring mechanism
-- A timer
-- Add additional cards
-- Multi-player capabilities so you can compare scores 
+Step 2 :
+Make static website using s3
+Go to s3->create 1 bucket->Disable block all public access ->add buckey policy by paste the attched code in this repo-> enable static website hosting
 
-## The Deployment Environment
-The code will be deployed and hosted in S3.
+Step3:
+Create codepipeline to automate process
+Go to codepipeline->create pipeline->select source provider ar github and select your repo->skip buildprovider->select deploy provide as your s3 bucket
+Now your pipeline is successfully created.
 
-## The Deployment Pipeline
-The pipeline is created using AWS Code Pipeline.  The pipeline pulls the code from GitHub, and deploys it to S3 whenever a change is detected in the code.
+Copy your statci website link from s3 and put in new tab. Your game is ready!!
 
-## Cost
-All services used are eligible for the [AWS Free Tier](https://aws.amazon.com/free/).  However, charges will incur at some point so it's recommended that you shut down resources after completing this tutorial.
+Step 4:
+If you want make change in your game, you need to update files in your github repo. Then codepipeline automatically update your changes
